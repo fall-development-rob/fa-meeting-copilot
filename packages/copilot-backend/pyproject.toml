@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "src"  
+version = "0.1.0"
+description = "Backend service for the financial advisor copilot"
+authors = ["Robert Fall <fall.development@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^2.1.2"
+python-dotenv = "^1.0.1"  # Use the latest version available instead of "*"
+packaging = ">=24.0"
+pydantic = "^2.9.2"
+flask-cors = "^5.0.0"
+poethepoet = "^0.30.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+ruff = "^0.4.9"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+# ----------------------------------
+# --- Poe the Poet Configuration ---
+# ----------------------------------
+
+[tool.poe.tasks]
+
+# Linting
+lint-check = "poetry run ruff check ."
+format-check = "poetry run ruff format --check ."
+lint-fix = "poetry run ruff check --fix ."
+format-fix = "poetry run ruff format ."

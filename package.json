@@ -1,0 +1,25 @@
+{
+  "name": "fa-copilot-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start:frontend": "npm --prefix packages/copilot-frontend run start",
+    "start:backend": "docker-compose up backend",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "build:frontend": "npm --prefix packages/copilot-frontend run build",
+    "build:backend": "docker-compose build backend",
+    "build": "npm run build:frontend && npm run build:backend",
+    "test:frontend": "npm --prefix packages/copilot-frontend run test",
+    "test:backend": "docker-compose run backend pytest",
+    "test": "npm run test:frontend && npm run test:backend",
+    "lint-fix:backend": "cd packages/copilot-backend && poetry run poe lint-fix"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "lerna": "^8.1.9"
+  }
+}
