@@ -19,7 +19,7 @@
     "lint-fix:backend": "cd packages/copilot-backend && poetry run poe lint-fix"
   },
   "devDependencies": {
-    "concurrently": "^7.0.0",
+    "concurrently": "^9.1.0",
     "lerna": "^8.1.9"
   }
 }
